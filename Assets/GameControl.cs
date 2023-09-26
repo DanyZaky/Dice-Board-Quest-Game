@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameControl : MonoBehaviour {
 
+    public TextMeshProUGUI playerText;
+    public Button diceButton;
+    
     private static GameObject player1, player2;
 
     public static int diceSideThrown = 0;
@@ -32,12 +36,20 @@ public class GameControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (player1.GetComponent<FollowThePath>().moveAllowed == true || player2.GetComponent<FollowThePath>().moveAllowed == true)
+        {
+            diceButton.interactable = false;
+        }
+        else
+        {
+            diceButton.interactable = true;
+        }
+        
         if (player1.GetComponent<FollowThePath>().waypointIndex > 
             player1StartWaypoint + diceSideThrown)
         {
             player1.GetComponent<FollowThePath>().moveAllowed = false;
-            //player1MoveText.gameObject.SetActive(false);
-            //player2MoveText.gameObject.SetActive(true);
+            playerText.text = "Player 2";
             Debug.Log("Player 2 Move");
             player1StartWaypoint = player1.GetComponent<FollowThePath>().waypointIndex - 1;
         }
@@ -46,9 +58,8 @@ public class GameControl : MonoBehaviour {
             player2StartWaypoint + diceSideThrown)
         {
             player2.GetComponent<FollowThePath>().moveAllowed = false;
-            //player2MoveText.gameObject.SetActive(false);
-            //player1MoveText.gameObject.SetActive(true);
             Debug.Log("Player 1 Move");
+            playerText.text = "Player 1";
             player2StartWaypoint = player2.GetComponent<FollowThePath>().waypointIndex - 1;
         }
 
