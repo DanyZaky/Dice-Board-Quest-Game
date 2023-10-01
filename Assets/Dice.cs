@@ -51,4 +51,32 @@ public class Dice : MonoBehaviour {
         
         coroutineAllowed = true;
     }
+
+    public void JawabanBenar()
+    {
+        GameControl.diceSideThrown = 2;
+        whosTurn *= -1;
+        if (whosTurn == 1)
+        {
+            GameControl.MovePlayer(1);
+        }
+        else if (whosTurn == -1)
+        {
+            GameControl.MovePlayer(2);
+        }
+    }
+
+    public void JawabanSalah()
+    {
+        GameControl.diceSideThrown = -2;
+        whosTurn *= -1;
+        if (whosTurn == 1)
+        {
+            GameControl.MovePlayer(1);
+        }
+        else if (whosTurn == -1)
+        {
+            GameControl.MovePlayer(2);
+        }
+    }
 }

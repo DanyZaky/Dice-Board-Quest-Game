@@ -4,6 +4,9 @@ using TMPro;
 
 public class GameControl : MonoBehaviour {
 
+    public GameObject Soal;
+    public QuestGenerator qg;
+
     public TextMeshProUGUI playerText;
     public Button diceButton;
     
@@ -31,6 +34,8 @@ public class GameControl : MonoBehaviour {
         //whoWinsTextShadow.gameObject.SetActive(false);
         //player1MoveText.gameObject.SetActive(true);
         //player2MoveText.gameObject.SetActive(false);
+
+        Soal.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,6 +48,14 @@ public class GameControl : MonoBehaviour {
         else
         {
             diceButton.interactable = true;
+
+            for (int i = 1; i < qg.QuestValue.Length; i++)
+            {
+                if (qg.currentPlayer1Position == qg.QuestValue[i] || qg.currentPlayer2Position == qg.QuestValue[i])
+                {
+                    Soal.SetActive(true);
+                }
+            }
         }
         
         if (player1.GetComponent<FollowThePath>().waypointIndex > 

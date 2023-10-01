@@ -11,6 +11,11 @@ public class QuestGenerator : MonoBehaviour
     public int maxRange = 40; // Rentang maksimum
     public int[] QuestValue; // Array untuk menyimpan angka-angka acak
 
+    public int currentPlayer1Position;
+    public int currentPlayer2Position;
+
+    public FollowThePath player1Pos, player2Pos;
+
     void Start()
     {
         GenerateRandomNumbers();
@@ -19,6 +24,12 @@ public class QuestGenerator : MonoBehaviour
         {
             Instantiate(questMarker, new Vector3(waypoints[QuestValue[i]-1].position.x, waypoints[QuestValue[i]-1].position.y, waypoints[0].position.z), Quaternion.identity);
         }
+    }
+
+    private void Update()
+    {
+        currentPlayer1Position = player1Pos.waypointIndex;
+        currentPlayer2Position = player2Pos.waypointIndex;
     }
 
     void GenerateRandomNumbers()

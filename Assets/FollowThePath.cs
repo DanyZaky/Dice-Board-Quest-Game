@@ -6,10 +6,7 @@ public class FollowThePath : MonoBehaviour {
 
     [SerializeField]
     private float moveSpeed = 1f;
-
-    [HideInInspector]
     public int waypointIndex = 0;
-
     public bool moveAllowed = false;
 
 	// Use this for initialization
