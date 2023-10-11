@@ -18,22 +18,13 @@ public class GameControl : MonoBehaviour {
 
     public static bool gameOver = false;
 
-    // Use this for initialization
-    void Start () {
-
-        //whoWinsTextShadow = GameObject.Find("WhoWinsText");
-        //player1MoveText = GameObject.Find("Player1MoveText");
-        //player2MoveText = GameObject.Find("Player2MoveText");
-
+    void Start ()
+    {
         player1 = GameObject.Find("Player1");
         player2 = GameObject.Find("Player2");
 
         player1.GetComponent<FollowThePath>().moveAllowed = false;
         player2.GetComponent<FollowThePath>().moveAllowed = false;
-
-        //whoWinsTextShadow.gameObject.SetActive(false);
-        //player1MoveText.gameObject.SetActive(true);
-        //player2MoveText.gameObject.SetActive(false);
 
         Soal.SetActive(false);
     }
@@ -54,6 +45,7 @@ public class GameControl : MonoBehaviour {
                 if (qg.currentPlayer1Position == qg.QuestValue[i] || qg.currentPlayer2Position == qg.QuestValue[i])
                 {
                     Soal.SetActive(true);
+                    qg.QuestValue[i] = -100;
                 }
             }
         }
@@ -79,8 +71,6 @@ public class GameControl : MonoBehaviour {
         if (player1.GetComponent<FollowThePath>().waypointIndex == 
             player1.GetComponent<FollowThePath>().waypoints.Length)
         {
-            //whoWinsTextShadow.gameObject.SetActive(true);
-            //whoWinsTextShadow.GetComponent<Text>().text = "Player 1 Wins";
             Debug.Log("Player 1 Wins");
             gameOver = true;
         }
@@ -88,11 +78,6 @@ public class GameControl : MonoBehaviour {
         if (player2.GetComponent<FollowThePath>().waypointIndex ==
             player2.GetComponent<FollowThePath>().waypoints.Length)
         {
-            //whoWinsTextShadow.gameObject.SetActive(true);
-            //layer1MoveText.gameObject.SetActive(false);
-            //player2MoveText.gameObject.SetActive(false);
-            //whoWinsTextShadow.GetComponent<Text>().text = "Player 2 Wins";
-
             Debug.Log("Player 2 Wins");
             gameOver = true;
         }
@@ -103,10 +88,28 @@ public class GameControl : MonoBehaviour {
         switch (playerToMove) { 
             case 1:
                 player1.GetComponent<FollowThePath>().moveAllowed = true;
+                player1.GetComponent<FollowThePath>().moveReverseAllowed = false;
                 break;
 
             case 2:
                 player2.GetComponent<FollowThePath>().moveAllowed = true;
+                player2.GetComponent<FollowThePath>().moveReverseAllowed = false;
+                break;
+        }
+    }
+
+    public static void MoveReversePlayer(int playerToMove)
+    {
+        switch (playerToMove)
+        {
+            case 1:
+                player1.GetComponent<FollowThePath>().waypointIndex -= 2;
+                player1.transform.position = player1.GetComponent<FollowThePath>().waypoints[player1.GetComponent<FollowThePath>().waypointIndex-1].transform.position;
+                break;
+
+            case 2:
+                player2.GetComponent<FollowThePath>().waypointIndex -= 2;
+                player2.transform.position = player2.GetComponent<FollowThePath>().waypoints[player2.GetComponent<FollowThePath>().waypointIndex-1].transform.position;
                 break;
         }
     }

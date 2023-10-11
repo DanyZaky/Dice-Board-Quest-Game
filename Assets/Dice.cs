@@ -68,15 +68,15 @@ public class Dice : MonoBehaviour {
 
     public void JawabanSalah()
     {
-        GameControl.diceSideThrown = -2;
+        //GameControl.diceSideThrown = -2;
         whosTurn *= -1;
         if (whosTurn == 1)
         {
-            GameControl.MovePlayer(1);
+            GameControl.MoveReversePlayer(1);
         }
         else if (whosTurn == -1)
         {
-            GameControl.MovePlayer(2);
+            GameControl.MoveReversePlayer(2);
         }
     }
 }
