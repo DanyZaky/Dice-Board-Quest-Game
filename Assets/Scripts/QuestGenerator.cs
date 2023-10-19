@@ -9,6 +9,8 @@ public class QuestGenerator : MonoBehaviour
     public int minRange = 1; // Rentang minimum
     public int maxRange = 40; // Rentang maksimum
     public int[] QuestValue; // Array untuk menyimpan angka-angka acak
+    public int minNomor = 1, maxNomor = 29;
+    public int[] QuestNomorValue;
 
     public GameObject[] questMarkers;
 
@@ -20,6 +22,7 @@ public class QuestGenerator : MonoBehaviour
     void Start()
     {
         GenerateRandomNumbers();
+        GenerateSoalRandomNumbers();
 
         for (int i = 0; i < QuestValue.Length; i++)
         {
@@ -52,6 +55,20 @@ public class QuestGenerator : MonoBehaviour
             } while (ArrayContains(QuestValue, randomNumber));
 
             QuestValue[i] = randomNumber;
+        }
+    }
+
+    void GenerateSoalRandomNumbers()
+    {
+        for (int i = 0; i < arrayLength; i++)
+        {
+            int randomNumber;
+            do
+            {
+                randomNumber = Random.Range(minNomor, maxNomor + 1);
+            } while (ArrayContains(QuestNomorValue, randomNumber));
+
+            QuestNomorValue[i] = randomNumber;
         }
     }
 
