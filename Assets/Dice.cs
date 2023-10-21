@@ -9,6 +9,8 @@ public class Dice : MonoBehaviour {
     private int whosTurn = 1;
     private bool coroutineAllowed = true;
 
+    public GameObject benarText, salahText;
+
 	// Use this for initialization
 	private void Start () {
         rend.sprite = diceSides[5];
@@ -64,6 +66,7 @@ public class Dice : MonoBehaviour {
         {
             GameControl.MovePlayer(2);
         }
+        StartCoroutine(delayActive(benarText, 0.6f));
     }
 
     public void JawabanSalah()
@@ -78,5 +81,13 @@ public class Dice : MonoBehaviour {
         {
             GameControl.MoveReversePlayer(2);
         }
+        StartCoroutine(delayActive(salahText, 0.6f));
+    }
+
+    private IEnumerator delayActive(GameObject obj, float delay)
+    {
+        obj.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        obj.SetActive(false);
     }
 }

@@ -11,6 +11,7 @@ public class QuestGenerator : MonoBehaviour
     public int[] QuestValue; // Array untuk menyimpan angka-angka acak
     public int minNomor = 1, maxNomor = 29;
     public int[] QuestNomorValue;
+    public GameObject[] soalIndex;
 
     public GameObject[] questMarkers;
 

@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour {
 
-    public GameObject Soal;
+    public GameObject gameOverPanel;
+    public TextMeshProUGUI gameOverText;
     public QuestGenerator qg;
 
     public TextMeshProUGUI playerText;
@@ -25,8 +27,6 @@ public class GameControl : MonoBehaviour {
 
         player1.GetComponent<FollowThePath>().moveAllowed = false;
         player2.GetComponent<FollowThePath>().moveAllowed = false;
-
-        Soal.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,7 +44,8 @@ public class GameControl : MonoBehaviour {
             {
                 if (qg.currentPlayer1Position == qg.QuestValue[i] || qg.currentPlayer2Position == qg.QuestValue[i])
                 {
-                    Soal.SetActive(true);
+                    //Soal.SetActive(true);
+                    qg.soalIndex[qg.QuestNomorValue[i] - 1].SetActive(true);
                     qg.QuestValue[i] = -100;
                 }
             }
@@ -71,14 +72,18 @@ public class GameControl : MonoBehaviour {
         if (player1.GetComponent<FollowThePath>().waypointIndex == 
             player1.GetComponent<FollowThePath>().waypoints.Length)
         {
+            gameOverPanel.SetActive(true);
             Debug.Log("Player 1 Wins");
+            gameOverText.text = "Player 1 Wins";
             gameOver = true;
         }
 
         if (player2.GetComponent<FollowThePath>().waypointIndex ==
             player2.GetComponent<FollowThePath>().waypoints.Length)
         {
+            gameOverPanel.SetActive(true);
             Debug.Log("Player 2 Wins");
+            gameOverText.text = "Player 2 Wins";
             gameOver = true;
         }
     }
@@ -112,5 +117,15 @@ public class GameControl : MonoBehaviour {
                 player2.transform.position = player2.GetComponent<FollowThePath>().waypoints[player2.GetComponent<FollowThePath>().waypointIndex-1].transform.position;
                 break;
         }
+    }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void MenuButton()
+    {
+
     }
 }
