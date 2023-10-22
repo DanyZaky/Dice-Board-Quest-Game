@@ -8,6 +8,7 @@ public class Dice : MonoBehaviour {
     public Image rend;
     private int whosTurn = 1;
     private bool coroutineAllowed = true;
+    public GameControl gameControl;
 
     public GameObject benarText, salahText;
 
@@ -24,6 +25,7 @@ public class Dice : MonoBehaviour {
 
     private IEnumerator RollTheDice()
     {
+        gameControl.SFXButton();
         coroutineAllowed = false;
         int randomDiceSide = 0;
         for (int i = 0; i <= 20; i++)

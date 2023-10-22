@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour {
 
+    public AudioSource sfxButton;
+    
     public GameObject gameOverPanel;
     public TextMeshProUGUI gameOverText;
     public QuestGenerator qg;
@@ -122,10 +124,17 @@ public class GameControl : MonoBehaviour {
     public void RestartButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SFXButton();
     }
 
     public void MenuButton()
     {
+        SceneManager.LoadScene(0);
+        SFXButton();
+    }
 
+    public void SFXButton()
+    {
+        sfxButton.Play();
     }
 }
