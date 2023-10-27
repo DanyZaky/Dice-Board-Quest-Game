@@ -12412,6 +12412,8 @@ MonoBehaviour:
   qg: {fileID: 433553558}
   playerText: {fileID: 1504723030}
   diceButton: {fileID: 1274401356}
+  player1Path: {fileID: 2077608129}
+  player2Path: {fileID: 158227460}
 --- !u!114 &433553558
 MonoBehaviour:
   m_ObjectHideFlags: 0

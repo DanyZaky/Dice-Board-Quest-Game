@@ -571,8 +571,8 @@ MonoBehaviour:
     pada tahun 1933 dengan biaya sendiri untuk mengikuti Kongres PSII, menjual kekayaan
     pribadinya demi perjuangan kemerdekaan Indonesia. Meskipun dihadapkan pada tekanan
     berat dari berbagai pihak, Opu Daeng Risadju tetap gigih dalam perjuangannya.
-  descText: {fileID: 0}
-  imageSprite: {fileID: 0}
+  descText: {fileID: 1757903995}
+  imageSprite: {fileID: 1598363799}
 --- !u!1 &64554375
 GameObject:
   m_ObjectHideFlags: 0
@@ -5231,6 +5231,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 363397289}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 868364862}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1926139843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5364,6 +5388,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 44755654}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: SFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1956061888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5488,6 +5524,18 @@ MonoBehaviour:
       - m_Target: {fileID: 44755656}
         m_TargetAssemblyTypeName: MateriManager, Assembly-CSharp
         m_MethodName: Prev
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 44755654}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: SFXButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

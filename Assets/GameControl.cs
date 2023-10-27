@@ -22,6 +22,8 @@ public class GameControl : MonoBehaviour {
 
     public static bool gameOver = false;
 
+    public FollowThePath player1Path, player2Path;
+
     void Start ()
     {
         player1 = GameObject.Find("Player1");
@@ -29,6 +31,8 @@ public class GameControl : MonoBehaviour {
 
         player1.GetComponent<FollowThePath>().moveAllowed = false;
         player2.GetComponent<FollowThePath>().moveAllowed = false;
+
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -71,22 +75,25 @@ public class GameControl : MonoBehaviour {
             player2StartWaypoint = player2.GetComponent<FollowThePath>().waypointIndex - 1;
         }
 
-        if (player1.GetComponent<FollowThePath>().waypointIndex == 
+        if(!player1Path.moveAllowed || !player2Path.moveAllowed)
+        {
+            if (player1.GetComponent<FollowThePath>().waypointIndex ==
             player1.GetComponent<FollowThePath>().waypoints.Length)
-        {
-            gameOverPanel.SetActive(true);
-            Debug.Log("Player 1 Wins");
-            gameOverText.text = "Player 1 Wins";
-            gameOver = true;
-        }
+            {
+                gameOverPanel.SetActive(true);
+                Debug.Log("Player 1 Wins");
+                gameOverText.text = "Player 1 Wins";
+                gameOver = true;
+            }
 
-        if (player2.GetComponent<FollowThePath>().waypointIndex ==
-            player2.GetComponent<FollowThePath>().waypoints.Length)
-        {
-            gameOverPanel.SetActive(true);
-            Debug.Log("Player 2 Wins");
-            gameOverText.text = "Player 2 Wins";
-            gameOver = true;
+            if (player2.GetComponent<FollowThePath>().waypointIndex ==
+                player2.GetComponent<FollowThePath>().waypoints.Length)
+            {
+                gameOverPanel.SetActive(true);
+                Debug.Log("Player 2 Wins");
+                gameOverText.text = "Player 2 Wins";
+                gameOver = true;
+            }
         }
     }
 
