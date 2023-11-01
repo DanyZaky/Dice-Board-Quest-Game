@@ -26,6 +26,11 @@ public class GameControl : MonoBehaviour {
 
     void Start ()
     {
+        diceSideThrown = 0;
+        player1StartWaypoint = 0;
+        player2StartWaypoint = 0;
+        gameOver = false;
+        
         player1 = GameObject.Find("Player1");
         player2 = GameObject.Find("Player2");
 
