@@ -23,6 +23,7 @@ public class GameControl : MonoBehaviour {
     public static bool gameOver = false;
 
     public FollowThePath player1Path, player2Path;
+    public Dice dice;
 
     void Start ()
     {
@@ -58,6 +59,8 @@ public class GameControl : MonoBehaviour {
                     //Soal.SetActive(true);
                     qg.soalIndex[qg.QuestNomorValue[i] - 1].SetActive(true);
                     qg.QuestValue[i] = -100;
+                    dice.whosTurn *= -1;
+                    dice.whosTurn *= -1;
                 }
             }
         }
