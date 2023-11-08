@@ -42,6 +42,7 @@ public class FollowThePath : MonoBehaviour {
                 waypointIndex += 1;
             }
         }
+        
     }
 
     private void MoveReverse()

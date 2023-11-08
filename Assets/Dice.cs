@@ -12,9 +12,12 @@ public class Dice : MonoBehaviour {
 
     public GameObject benarText, salahText;
 
+    public bool isEnam;
+
 	// Use this for initialization
 	private void Start () {
         rend.sprite = diceSides[5];
+        isEnam = false;
 	}
 
     public void OnClickDice()
@@ -50,8 +53,13 @@ public class Dice : MonoBehaviour {
 
         if(GameControl.diceSideThrown != 6)
         {
-            whosTurn *= -1;
+            whosTurn *= -1; //switch player
             Debug.Log("ini bukan enam");
+            isEnam = false;
+        }
+        else
+        {
+            isEnam = true;
         }
         
         coroutineAllowed = true;

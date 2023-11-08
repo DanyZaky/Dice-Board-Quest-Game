@@ -59,8 +59,10 @@ public class GameControl : MonoBehaviour {
                     //Soal.SetActive(true);
                     qg.soalIndex[qg.QuestNomorValue[i] - 1].SetActive(true);
                     qg.QuestValue[i] = -100;
-                    dice.whosTurn *= -1;
-                    dice.whosTurn *= -1;
+                    if(!dice.isEnam)
+                    {
+                        dice.whosTurn *= -1;
+                    }
                 }
             }
         }
