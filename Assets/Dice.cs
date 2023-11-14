@@ -83,7 +83,7 @@ public class Dice : MonoBehaviour {
     public void JawabanSalah()
     {
         //GameControl.diceSideThrown = -2;
-        //whosTurn *= -1;
+        
         if (whosTurn == 1)
         {
             GameControl.MoveReversePlayer(1);
@@ -100,5 +100,6 @@ public class Dice : MonoBehaviour {
         obj.SetActive(true);
         yield return new WaitForSeconds(delay);
         obj.SetActive(false);
+        whosTurn *= -1;
     }
 }
