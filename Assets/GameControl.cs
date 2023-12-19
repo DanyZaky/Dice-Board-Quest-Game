@@ -48,15 +48,14 @@ public class GameControl : MonoBehaviour {
         {
             diceButton.interactable = false;
         }
-        else
+        else if (player1.GetComponent<FollowThePath>().moveAllowed == false && player2.GetComponent<FollowThePath>().moveAllowed == false)
         {
             diceButton.interactable = true;
 
-            for (int i = 1; i < qg.QuestValue.Length; i++)
+            for (int i = 0; i < qg.QuestValue.Length; i++)
             {
                 if (qg.currentPlayer1Position == qg.QuestValue[i] || qg.currentPlayer2Position == qg.QuestValue[i])
                 {
-                    //Soal.SetActive(true);
                     qg.soalIndex[qg.QuestNomorValue[i] - 1].SetActive(true);
                     qg.QuestValue[i] = -100;
                     if(!dice.isEnam)
@@ -72,17 +71,17 @@ public class GameControl : MonoBehaviour {
         {
             player1.GetComponent<FollowThePath>().moveAllowed = false;
             playerText.text = "Player 2";
-            Debug.Log("Player 2 Move");
             player1StartWaypoint = player1.GetComponent<FollowThePath>().waypointIndex - 1;
+            Debug.Log("P1 " + player1StartWaypoint);
         }
 
         if (player2.GetComponent<FollowThePath>().waypointIndex >
             player2StartWaypoint + diceSideThrown)
         {
             player2.GetComponent<FollowThePath>().moveAllowed = false;
-            Debug.Log("Player 1 Move");
             playerText.text = "Player 1";
             player2StartWaypoint = player2.GetComponent<FollowThePath>().waypointIndex - 1;
+            Debug.Log("P2 " + player2StartWaypoint);
         }
 
         if(!player1Path.moveAllowed || !player2Path.moveAllowed)

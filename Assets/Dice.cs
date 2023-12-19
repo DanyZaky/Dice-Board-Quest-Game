@@ -11,6 +11,7 @@ public class Dice : MonoBehaviour {
     public GameControl gameControl;
 
     public GameObject benarText, salahText;
+    public FollowThePath player1Path, player2Path;
 
     public bool isEnam;
 
@@ -29,6 +30,7 @@ public class Dice : MonoBehaviour {
 
     private IEnumerator RollTheDice()
     {
+        GameControl.diceSideThrown = 0;
         gameControl.SFXButton();
         coroutineAllowed = false;
         int randomDiceSide = 0;
@@ -36,13 +38,14 @@ public class Dice : MonoBehaviour {
         {
             randomDiceSide = Random.Range(0, 6);
             rend.sprite = diceSides[randomDiceSide];
-            Debug.Log(randomDiceSide);
+            //Debug.Log(randomDiceSide);
             rend.gameObject.GetComponent<Button>().interactable = false;
             yield return new WaitForSeconds(0.05f);
             rend.gameObject.GetComponent<Button>().interactable = true;
         }
 
         GameControl.diceSideThrown = randomDiceSide + 1;
+        Debug.Log("jalan sebanyak " + GameControl.diceSideThrown);
         if (whosTurn == 1)
         {
             GameControl.MovePlayer(1);
@@ -87,10 +90,12 @@ public class Dice : MonoBehaviour {
         if (whosTurn == 1)
         {
             GameControl.MoveReversePlayer(1);
+            GameControl.player1StartWaypoint = player1Path.waypointIndex - 1;
         }
         else if (whosTurn == -1)
         {
             GameControl.MoveReversePlayer(2);
+            GameControl.player2StartWaypoint = player2Path.waypointIndex - 1;
         }
         StartCoroutine(delayActive(salahText, 0.6f));
     }
@@ -101,5 +106,6 @@ public class Dice : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         obj.SetActive(false);
         whosTurn *= -1;
+        GameControl.diceSideThrown = 0;
     }
 }

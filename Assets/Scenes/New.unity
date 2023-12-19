@@ -12381,6 +12381,8 @@ MonoBehaviour:
   gameControl: {fileID: 433553557}
   benarText: {fileID: 751596248}
   salahText: {fileID: 1727081254}
+  player1Path: {fileID: 2077608129}
+  player2Path: {fileID: 2077608129}
   isEnam: 0
 --- !u!4 &433553556
 Transform:

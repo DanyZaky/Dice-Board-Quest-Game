@@ -28,7 +28,7 @@ public class FollowThePath : MonoBehaviour {
         {
             MoveReverse();
         }
-        Debug.Log(waypointIndex + gameObject.name);
+        Debug.Log(gameObject.name + " berada di posisi " + waypointIndex);
     }
 
     private void Move()
